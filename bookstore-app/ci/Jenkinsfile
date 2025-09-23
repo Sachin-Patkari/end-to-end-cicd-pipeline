@@ -1,13 +1,11 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:18-alpine'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
+  agent any
+  tools {
+    nodejs 'NodeJS'
   }
   environment {
     DOCKERHUB = 'sachinpatkari/bookstore-app'
-    WORKER_IP = '13.232.120.184'
+    WORKER_IP = '13.201.34.21'
   }
   stages {
     stage('Checkout') { steps { checkout scm } }
@@ -39,7 +37,6 @@ pipeline {
       }
     }
     stage('Docker Build & Push') {
-      agent any
       steps {
         dir('bookstore-app') {
           withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
@@ -56,7 +53,6 @@ pipeline {
       }
     }
     stage('Container Security') {
-      agent any
       steps {
         dir('bookstore-app') {
           sh '''
