@@ -1,1 +1,2 @@
 .terraform/
+bookstore-app/terraform/terraform.tfstate
