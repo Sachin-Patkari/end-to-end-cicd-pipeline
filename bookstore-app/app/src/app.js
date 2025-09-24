@@ -31,7 +31,7 @@ app.get('/metrics', async (req, res) => {
 // Home Page - Travel Website UI
 app.get('/', (req, res) => {
   const html = `
-    <html><head><title>✈️ यात्रा अन्वेषक</title><style>
+    <html><head><title>✈️ यात्रा अन्वेषक..</title><style>
       body{font-family:Arial;margin:0;background:linear-gradient(to bottom,#c3fce0,#c2fbc2);color:#333}
       .header{background:#28a745;color:white;text-align:center;padding:40px 20px}
       .header h1{margin:0;font-size:40px}
