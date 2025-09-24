@@ -23,9 +23,9 @@ pipeline {
       steps {
         dir('bookstore-app') {
           sh '''
-            scp -o StrictHostKeyChecking=no -i ~/Download/sachin1_key.pem k8s/deployment.yaml ubuntu@${WORKER_IP}:/home/ubuntu/
-            scp -o StrictHostKeyChecking=no -i ~/Download/sachin1_key.pem k8s/service.yaml ubuntu@${WORKER_IP}:/home/ubuntu/
-            ssh -o StrictHostKeyChecking=no -i ~/Download/sachin1_key.pem ubuntu@${WORKER_IP} "export KUBECONFIG=/home/ubuntu/kubeconfig && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml"
+            scp -o StrictHostKeyChecking=no -i ~/.ssh/sachin1_key.pem k8s/deployment.yaml ubuntu@${WORKER_IP}:/home/ubuntu/
+            scp -o StrictHostKeyChecking=no -i ~/.ssh/sachin1_key.pem k8s/service.yaml ubuntu@${WORKER_IP}:/home/ubuntu/
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/sachin1_key.pem ubuntu@${WORKER_IP} "export KUBECONFIG=/home/ubuntu/kubeconfig && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml"
           '''
         }
       }
@@ -33,7 +33,7 @@ pipeline {
     stage('Verify Deployment') {
       steps {
         sh '''
-          ssh -o StrictHostKeyChecking=no -i ~/Download/sachin1_key.pem ubuntu@${WORKER_IP} "export KUBECONFIG=/home/ubuntu/kubeconfig && kubectl rollout status deployment/bookstore && kubectl get pods,svc -l app=bookstore"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/sachin1_key.pem ubuntu@${WORKER_IP} "export KUBECONFIG=/home/ubuntu/kubeconfig && kubectl rollout status deployment/bookstore && kubectl get pods,svc -l app=bookstore"
         '''
       }
     }
