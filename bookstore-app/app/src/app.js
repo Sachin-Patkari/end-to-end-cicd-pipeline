@@ -32,8 +32,8 @@ app.get('/metrics', async (req, res) => {
 app.get('/', (req, res) => {
   const html = `
     <html><head><title>✈️ यात्रा अन्वेषक</title><style>
-      body{font-family:Arial;margin:0;background:linear-gradient(to bottom,#e0c3fc,#fbc2eb);color:#333}
-      .header{background:#d63384;color:white;text-align:center;padding:40px 20px}
+      body{font-family:Arial;margin:0;background:linear-gradient(to bottom,#c3fce0,#c2fbc2);color:#333}
+      .header{background:#28a745;color:white;text-align:center;padding:40px 20px}
       .header h1{margin:0;font-size:40px}
       .header p{margin:10px 0 0;font-size:18px}
       .packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;padding:30px}
