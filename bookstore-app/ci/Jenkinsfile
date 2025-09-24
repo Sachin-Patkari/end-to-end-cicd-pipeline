@@ -37,6 +37,18 @@ pipeline {
       }
     }
     stage('Docker Build & Push') {
+      when {
+        expression {
+          try {
+            withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+              return true
+            }
+          } catch (Exception e) {
+            echo "Docker Hub credentials not found, skipping Docker build"
+            return false
+          }
+        }
+      }
       steps {
         dir('bookstore-app') {
           withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
@@ -53,6 +65,18 @@ pipeline {
       }
     }
     stage('Container Security') {
+      when {
+        expression {
+          try {
+            withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+              return true
+            }
+          } catch (Exception e) {
+            echo "Docker Hub credentials not found, skipping container security scan"
+            return false
+          }
+        }
+      }
       steps {
         dir('bookstore-app') {
           sh '''
