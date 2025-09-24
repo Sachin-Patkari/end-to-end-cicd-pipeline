@@ -1,6 +1,6 @@
 [jenkins]
 # replace with actual public ip from terraform output
-13.232.120.184 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/sachin1_key.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+3.110.77.226 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/sachin1_key.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
 [worker]
-13.201.34.21 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/sachin1_key.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+3.110.197.181 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/sachin1_key.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
